@@ -1,0 +1,87 @@
+<!--Modal: Login / Register Form-->
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <button type="button" class="cross-btn" data-dismiss="modal">&times;</button>
+  <div class="modal-dialog mat-elevation-z8" >
+    <!-- Modal content-->
+   
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="container" id="container"></div>
+          <mat-tab-group>
+            <mat-tab label="Login" class="active">
+              <ng-template matTabContent>
+                  <div class="login-box modal-box">
+                  <form (submit)="login()" [formGroup]="logindetail">
+                    <h1>LOGIN</h1>
+                    <input formControlName="username" type="email" placeholder="Username" />
+                    <p *ngIf="(logindetail.get('username').dirty && logindetail.get('username').touched) && logindetail.get('username').invalid" style="color: red">
+                        Enter Your Username </p>
+
+                    <input formControlName="password" type="password" placeholder="Password" />
+                    <p *ngIf="(logindetail.get('password').dirty && logindetail.get('password').touched) && logindetail.get('password').invalid" style="color: red">
+                        Please Enter Your Password</p>
+
+                    <a style="cursor: pointer" (click)="forgotpassword()" class="forgot-password">Forgot your password?</a>
+                    <button type="submit" > LOGIN</button>
+                  
+                    <div class="social-container">
+                        <span>or login using </span>
+                     
+                      
+                       <button type="button" (click)="google()" class="social"><img src="assets/icons/google.svg" style="width: 38px"></button>
+                       <button type="button"  class="social"><img src="assets/icons/facebook.svg" style="width:38px"></button>
+                      </div> 
+                  </form>
+                  </div>
+               
+              </ng-template>
+            </mat-tab>
+            <mat-tab label="Sign Up">
+              <ng-template matTabContent>
+                <div class="sign-up-box modal-box">
+                  <form (submit)="signUp()" [formGroup]="signupdetail">
+                    <h1>Create Account</h1>
+                   
+                    <input required formControlName="name" type="text" placeholder="Name" />
+                     <p *ngIf="(signupdetail.get('name').dirty && signupdetail.get('name').touched) && signupdetail.get('name').invalid" style="color: red" >
+                      Please Enter Your Name
+                    </p>
+
+                    <input formControlName="email" type="email" placeholder="Email" />
+                    
+                    <p *ngIf="(signupdetail.get('email').dirty && signupdetail.get('email').touched) && signupdetail.get('email').invalid" style="color: red">
+                      Please Enter a valid Email
+                    </p>
+
+                    <input formControlName="username" type="text" placeholder="Username" />
+                    
+                       <p *ngIf="(signupdetail.get('username').dirty && signupdetail.get('username').touched) && signupdetail.get('username').invalid" style="color: red">
+                          Please Enter Username </p>
+
+                    <input formControlName="password" type="password" placeholder="Password" />
+                   
+                      <p *ngIf="(signupdetail.get('password').dirty && signupdetail.get('password').touched) && signupdetail.get('password').invalid" style="color: red">
+                        Please Enter Your Password</p>
+
+                    <input formControlName="confirmpassword" type="password" placeholder="Confirm Password" />
+                    <p style="color: red"  *ngIf="cpass">Enter your Password again to confirm</p>
+
+                    <button type="submit">Sign Up</button>
+                   
+                    <div class="social-container">
+                        <span>or create account using </span>
+                       <a href="#" class="social"><img src="assets/icons/google.svg" style="width: 100%"></a>
+                       <a href="#" class="social"><img src="assets/icons/facebook.svg" style="width: 100%"></a>
+                      </div> 
+                     
+                  </form>
+                </div>
+              </ng-template>
+            </mat-tab>
+          </mat-tab-group>
+        
+      </div>
+    </div>
+  </div>
+</div>

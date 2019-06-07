@@ -1,0 +1,94 @@
+.about-image{
+    width: 100%;
+    -webkit-box-shadow: 2px 6px 29px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 6px 29px -2px rgba(0,0,0,0.75);
+    box-shadow: 2px 6px 29px -2px rgba(0,0,0,0.75);
+}
+
+.about-box{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 420px;
+}
+
+.about-box p{
+    line-height: 45px;
+    font-weight: 600;
+    font-size: 1.5;
+}
+
+span{
+    color: white;
+    position: relative;
+    transition: all 0.2s ease-out;
+    background:teal;
+    font-size: 1rem;
+    padding: 2px;
+    font-weight: bold;
+}
+
+.service-icon{
+    width: 30%;
+    margin: 10px 0;
+}
+
+.service {
+    background: #fff;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+    -webkit-box-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 50vh;
+    border: 2px solid #e7e7e7;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  
+  .service:hover {
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+  }
+  
+  .service i {
+    font-size: 3.45rem;
+    margin: 1rem 0;
+  }
+
+
+.service-card h4 {
+  color: teal;
+  font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.service-card p{
+    color: #222;
+    font-size: 0.9rem;
+}
+
+.service-card:hover {
+  border: 2px solid teal;
+}
+
+.blockquote{
+    margin: 60px auto;
+    text-align: center;
+}
+
+.blockquote p{
+    font-weight: bold;
+}
+
+cite{
+    font-size: 0.95rem;
+}

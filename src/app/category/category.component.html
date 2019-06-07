@@ -1,0 +1,59 @@
+<section class="category-section">
+ 
+<div class="category-block">
+    <div class="head"> CATEGORY HEADING </div>
+<div class="category-body">
+  <div class="row">
+   
+  <div class="col-md-2">
+   
+      <div class="category-options">
+        <div class="option-head">Categories</div>
+        
+         <div class="option-items"><a (click)="biographies()" [routerLink]="['/category','biographies']" class="links">Biographies</a></div> 
+         <div class="option-items"><a (click)="novel()" [routerLink]="['/category','novel']" class="links">Novels</a></div> 
+         <div class="option-items"><a (click)="science()" [routerLink]="['/category','science']" class="links">Science</a></div> 
+         <div class="option-items"><a (click)="selfhelp()" [routerLink]="['/category','selfhelp']" class="links">Self-Help</a></div> 
+         <div class="option-items"><a (click)="buisness()" [routerLink]="['/category','buisness']" class="links">Business</a></div> 
+         <div class="option-items"><a (click)="technology()" [routerLink]="['/category','technology']" class="links">Technology</a></div> 
+        
+      </div>
+    
+  </div>
+
+
+  <div class="col-md-10">
+     
+<div class="box">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let bookitem of mybooks">
+     
+    <div class="box-body" >
+        <div class="box-item">
+           <img src={{bookitem.image}} alt="">
+              <div class="star-ratings-css">
+                <div class="star-ratings-css-top" [style.width]="bookitem.rating + '%'">
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <div class="star-ratings-css-bottom">
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+              </div>
+           <a  [routerLink]="['/bookdescription',bookcategory,bookitem._id]">
+              <div class="bookname"><span>{{bookitem.bookName}}</span></div>
+              <div class="bookprice"><span>&#x20b9;{{bookitem.price}}</span></div>
+            </a>
+            <a href="">
+            <div class="addbtn">
+              ADD TO MYBOOKS
+                        </div>  </a> 
+                </div>
+              </div>
+           
+            </div>
+          </div>
+          </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+</section>
