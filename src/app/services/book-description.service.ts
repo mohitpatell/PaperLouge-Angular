@@ -20,7 +20,7 @@ export class BookDescriptionService{
             id:id
         }
        // console.log(" From Service",book)
-        this.http.post<{message:string,book:any}>('http://localhost:3000/bookdescription',book)
+        this.http.post<{message:string,book:any}>('https://sheltered-forest-96439.herokuapp.com/bookdescription',book)
                  .subscribe((response)=>{
                     //console.log("Response From Service",response)
                     this.book=response.book;
@@ -33,6 +33,15 @@ export class BookDescriptionService{
 
     bookDetailListener(){
         return this.bookdetail.asObservable();
+    }
+
+    addbooktodownload(){
+        console.log("service")
+        this.http.get<{message:string}>('http://localhost:3000/bookdescription/downloaded')
+        .subscribe((response)=>{
+           console.log("Service Response",response.message)
+
+        })
     }
     
 }

@@ -5,49 +5,31 @@
     <div class="checkout-box">
       <div class="checkout-head">CHECKOUT</div>
 
-      <form [formGroup]="checkoutdata">
-        <mat-form-field>
-          <input matInput placeholder="Name" name="name" formControlName="name" required>
-          <mat-error>Enter Name</mat-error>
-        </mat-form-field>
 
-        <mat-form-field>
-          <input matInput placeholder="Card Number" name="cardnumber" formControlName="cardnumber" required>
-          <mat-error> Enter Card Number</mat-error>
-        </mat-form-field>
+      <mat-card >
+        <div>Make Payment</div>
+      <div class="card-content">
+          <div class="content">
+          <form  (ngSubmit)="buy()" [formGroup]="stripeTest">
 
-        <mat-form-field>
-          <input matInput placeholder="Card Holder Name" name="cardholder" formControlName="cardholder" required>
-          <mat-error> Enter Card Holder Name</mat-error>
-        </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Name" name="name"required type="text">
+              <mat-error>Name</mat-error>
+            </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>Card Experiation month</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let month of months" [value]="month">
-              {{month}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder="Card Experiation Year" name="year" formControlName="year" required>
-          <mat-error> Enter Card Experiation Year</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder="CVV Number" name="cvv" formControlName="cvv">
-          <mat-error> Enter CVV Number</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <textarea style="height: 20%" matInput placeholder="Billing Address" name="billingaddress"
-            formControlName="billingaddress" required></textarea>
-          <mat-error>Enter Billing Address</mat-error>
-        </mat-form-field>
-        <br>
-        <button type="submit" color="warn" mat-flat-button>Confirm</button>
-      </form>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Email" name="email"required type="text">
+              <mat-error>Email</mat-error>
+            </mat-form-field>
+          
+              <ngx-stripe-card [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
+              <button type="submit" color="primary" mat-flat-button>Buy</button>
+            </form>
+      </div>
+      </div>
+      
+    </mat-card>
+     
     </div>
   </div>
 

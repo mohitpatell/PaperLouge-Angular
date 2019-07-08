@@ -15,21 +15,21 @@
                   <form (submit)="login()" [formGroup]="logindetail">
                     <h1>LOGIN</h1>
                     <input formControlName="username" type="email" placeholder="Username" />
-                    <p *ngIf="(logindetail.get('username').dirty && logindetail.get('username').touched) && logindetail.get('username').invalid" style="color: red">
+                    <p *ngIf="loginsubmited && logindetail.get('username').invalid" style="color: red">
                         Enter Your Username </p>
 
                     <input formControlName="password" type="password" placeholder="Password" />
-                    <p *ngIf="(logindetail.get('password').dirty && logindetail.get('password').touched) && logindetail.get('password').invalid" style="color: red">
+                    <p *ngIf="loginsubmited && logindetail.get('password').invalid" style="color: red">
                         Please Enter Your Password</p>
 
-                    <a style="cursor: pointer" (click)="forgotpassword()" class="forgot-password">Forgot your password?</a>
+                    <a style="cursor: pointer" [routerLink]="['/username']" class="forgot-password">Forgot your password?</a>
                     <button type="submit" > LOGIN</button>
                   
                     <div class="social-container">
                         <span>or login using </span>
                      
                       
-                       <button type="button" (click)="google()" class="social"><img src="assets/icons/google.svg" style="width: 38px"></button>
+                       <button type="button" class="social"><img src="assets/icons/google.svg" style="width: 40px"></button>
                        <button type="button"  class="social"><img src="assets/icons/facebook.svg" style="width:38px"></button>
                       </div> 
                   </form>
@@ -44,24 +44,30 @@
                     <h1>Create Account</h1>
                    
                     <input required formControlName="name" type="text" placeholder="Name" />
-                     <p *ngIf="(signupdetail.get('name').dirty && signupdetail.get('name').touched) && signupdetail.get('name').invalid" style="color: red" >
+                     <p *ngIf="submited && signupdetail.get('name').invalid" style="color: red" >
                       Please Enter Your Name
                     </p>
 
                     <input formControlName="email" type="email" placeholder="Email" />
                     
-                    <p *ngIf="(signupdetail.get('email').dirty && signupdetail.get('email').touched) && signupdetail.get('email').invalid" style="color: red">
+                    <p *ngIf="submited && signupdetail.get('email').invalid" style="color: red">
                       Please Enter a valid Email
                     </p>
 
                     <input formControlName="username" type="text" placeholder="Username" />
                     
-                       <p *ngIf="(signupdetail.get('username').dirty && signupdetail.get('username').touched) && signupdetail.get('username').invalid" style="color: red">
+                       <p *ngIf="submited && signupdetail.get('username').invalid" style="color: red">
                           Please Enter Username </p>
+
+                          <div id="rates">
+                            <input type="radio" id="r1"  value="Male" formControlName="gender"> Male
+                            <input type="radio" id="r2"  value="Female" formControlName="gender"> Female
+                            <input type="radio" id="r3"  value="Other" checked="checked" formControlName="gender"> Other
+                          </div>
 
                     <input formControlName="password" type="password" placeholder="Password" />
                    
-                      <p *ngIf="(signupdetail.get('password').dirty && signupdetail.get('password').touched) && signupdetail.get('password').invalid" style="color: red">
+                      <p *ngIf="submited && signupdetail.get('password').invalid" style="color: red">
                         Please Enter Your Password</p>
 
                     <input formControlName="confirmpassword" type="password" placeholder="Confirm Password" />
@@ -71,7 +77,7 @@
                    
                     <div class="social-container">
                         <span>or create account using </span>
-                       <a href="#" class="social"><img src="assets/icons/google.svg" style="width: 100%"></a>
+                       <a href="https://sheltered-forest-96439.herokuapp.com/auth/google" class="social"><img src="assets/icons/google.svg" style="width: 100%"></a>
                        <a href="#" class="social"><img src="assets/icons/facebook.svg" style="width: 100%"></a>
                       </div> 
                      

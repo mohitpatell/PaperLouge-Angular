@@ -1,0 +1,52 @@
+footer{
+    background-color:rgb(24, 23, 23);
+    color: white;
+}
+.social-icons img{
+    width: 22px;
+    display: inline-block;
+    margin: 10px;
+}
+footer .col-md-4{
+    margin: 50px 0;
+}
+
+.col-md-4 h3{
+    font-family: 'Raleway', sans-serif !important;
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+    cursor: pointer;
+    transition: all 0.1s ease-in;
+}
+
+.col-md-4 h3:hover{
+    color: teal;
+}
+
+.col-md-4 p{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+}
+.quick-links a{
+ color: white;
+ text-decoration: none;
+ display: block;
+ margin-bottom: 15px;
+}
+.footer-about p{
+    margin:30px;
+    font-size: 0.8rem;
+}
+.contact-info span{
+    margin-right: 15px;
+}
+@media only screen and (max-width: 420px){
+    footer .col-md-4{
+        margin: 25px 0;
+    }
+    .logo{
+        margin: 30px auto;
+        text-align: center;
+    }
+}

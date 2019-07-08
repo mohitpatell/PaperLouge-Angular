@@ -7,6 +7,8 @@ const newuser=mongoose.Schema({
     email:{type:String, required:true, unique:true},
     password:{type:String, required:true},
     verified:{type:Boolean},
+    gender:{type:String,require:true},
+    lastlogin:{type:String},
     token:{type:String, required:true},
 })
 

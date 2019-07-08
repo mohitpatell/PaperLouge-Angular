@@ -18,16 +18,18 @@ export class NavbarComponent implements OnInit {
   books:Subscription;
   isUserLoggedIn:Subscription;
 
-  logged:boolean=false;
+  logged:boolean;
    
 
   constructor(public route :ActivatedRoute,public listbooks:ListBooksService, public auth:AuthService) { }
 
   ngOnInit() {
     let currentURL:string;
-
+console.log("navbar",this.logged);
+this.logged=this.auth.isLoggedIn;
     this.isUserLoggedIn=this.auth.userAuthListener()
                             .subscribe((response)=>{
+                              console.log("navcheck",response.status)
                               this.logged= response.status
                             })
 
@@ -109,8 +111,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout(){
-    console.log("logout");
-    this.logged=false;
+    this.auth.logout();
   }
 
 }

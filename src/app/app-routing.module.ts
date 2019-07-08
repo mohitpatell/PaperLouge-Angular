@@ -8,9 +8,17 @@ import { MybooksComponent } from './mybooks/mybooks.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { BookdescriptionComponent } from './bookdescription/bookdescription.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
+import { UsernameComponent } from './username/username.component';
 
 const routes: Routes = [
+
+  
+  {
+    path :'admin-login',
+    component:AdminLoginComponent
+  },
 
   {
     path :'bookdescription',
@@ -31,6 +39,10 @@ const routes: Routes = [
   {
     path :'resetpassword/:token',
     component: ResetPasswordComponent
+  },
+  {
+    path :'username',
+    component:UsernameComponent
   },
   {
     path :'about',

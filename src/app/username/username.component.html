@@ -1,0 +1,22 @@
+<section class="resetpass-section">
+
+
+  <div class="container text-center ">
+
+    <mat-card style="width: 50%;margin:30px auto;">
+    <div class="resetpass-box">
+      <div class="resetpass-head">Enter USERNAME</div>
+
+      <form (submit)="resetpassword()" [formGroup]="username">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Username" name="username" formControlName="username" required type="text">
+          <mat-error>Enter Username</mat-error>
+        </mat-form-field>
+        <br>
+        <button type="submit" color="primary" mat-flat-button>Submit</button>
+      </form>
+    </div>
+  </mat-card>
+  </div>
+
+</section>

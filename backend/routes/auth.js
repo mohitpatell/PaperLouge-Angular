@@ -3,9 +3,12 @@ const bcrypt= require('bcryptjs');
 const jwt=require('jsonwebtoken');
 const route=express.Router();
 const UserInfo= require('../model/userdetail');
+const TotalCount= require('../model/dashboard_count');
 const nodemailer= require('nodemailer');
 const passport= require('passport');
 const passportConf= require('../passport');
+
+//Transpoter for sending mails
 const transporter = nodemailer.createTransport({
     service:'gmail',
     auth: {
@@ -14,15 +17,31 @@ const transporter = nodemailer.createTransport({
     }
 });
 
+// FaceBook login
+route.get('/auth/facebook', passport.authenticate('facebook'));
+
+route.get('/auth/facebook/callback',
+  passport.authenticate('facebook', {failureRedirect: '/login' }),
+  (req,res)=>{
+    console.log('request is HRITIK',req.user.username ,req.user.picture);
+    res.render('dashboard',{
+        name:req.user.username,
+        email:req.user.email});
+     
+    });                                 
+
+// Google Login
+
 route.get('/auth/google',
 passport.authenticate('google', { scope: ['email','profile'] }));
 
 route.get('/auth/google/callback', 
- passport.authenticate('google', { failureRedirect: '/login' }),
+ passport.authenticate('google', {failureRedirect: 'https://paperlouge.herokuapp.com/' }),
  ( req, res) => {
-return  res.redirect('http://localhost:4200/');
+return  res.redirect('https://paperlouge.herokuapp.com/');
  });
 
+//  Create Account Request
 route.post('/signup',(req,res)=>{
     console.log(req.body.email,req.body.name)
     const temptoken =jwt.sign({
@@ -36,6 +55,8 @@ route.post('/signup',(req,res)=>{
                      email:req.body.email,
                      password:hashpassword,
                      verified:false,
+                     gender:req.body.gender,
+                     lastlogin:'Not Login Yet',
                      token:temptoken
               });
 
@@ -46,29 +67,30 @@ route.post('/signup',(req,res)=>{
                 text: "Hello world?", // plain text body
                 html: `
                         <h4>Hello Welcome to PaperLouge<h4>
-                        <p>Click on the link to Verify Your Account <a href="http://localhost:3000/activate/` +temptoken+`">http://localhost:3000/activate/`+temptoken+`
+                        <p>Click on the link to Verify Your Account <a href="https://sheltered-forest-96439.herokuapp.com/activate/` +temptoken+`">https://sheltered-forest-96439.herokuapp.com/activate/`+temptoken+`
                         </a>`
                         // html body
               };
-    
-              transporter.sendMail(sendingMail,(error,info)=>{
-                  if(error){
-                      console.log(error);
-                  }
-                  else{
-                      console.log("Email Sent", info.response);
-                  }
-              })
 
               userInfo.save()
                      .then(()=>{
-                         res.status(201).json({
+                        transporter.sendMail(sendingMail,(error,info)=>{
+                            if(error){
+                                console.log(error);
+                            }
+                            else{
+                                console.log("Email Sent", info.response);
+                            }
+                        })
+                        TotalCount.update({_id:'5d0a7c6f13fe8c1fe581943a'},{ $inc: { user: 1 }})
+                        .then(response=>console.log(response))
+                         return res.status(201).json({
                              message:"Account Created Please Verify Your Email to activate your account!!"
                          })
                      })
                      .catch((err)=>{
                             res.status(500).json({
-                                message:err
+                                message:err.message
                             })
                      })
 
@@ -79,6 +101,7 @@ route.post('/signup',(req,res)=>{
         })
 })
 
+// Sending Token to Verify Email
 route.get('/activate/:token',(req,res)=>{
 
     //console.log(req.params.token);
@@ -94,16 +117,23 @@ route.get('/activate/:token',(req,res)=>{
         //console.log("Token Username",username);
         UserInfo.update({username:username},{$set:{verified:true}})
         .then((result)=>{
-           // console.log(result);
+            console.log(result);
+            return res.json({
+                message:"Account Verified"
+            })
         })
        // console.log("Token Status",response);
     })
-
-    res.json({
-        message:"Account Verified"
+    .catch(err=>{
+        return res.json({
+            message:"Invalid Token Sent"
+        })
     })
+
+
 })
 
+// Login route request
 route.post('/login',(req,res)=>{
     let user;
     UserInfo.findOne({username:req.body.username})
@@ -129,7 +159,16 @@ route.post('/login',(req,res)=>{
                         message:"Incorrect Password"
                     })
                 }
+                var today = new Date();
+                var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+                var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                //console.log(date,time)
+                //console.log(user._id);
+                UserInfo.update({username:req.body.username}, {$set: {lastlogin:`${date},${time}`}})
+                .then(response=>res.json({message:"login time updated"}))
+                .catch(err=>console.log(err));
 
+                //console.log(date,time)
                 const token = jwt.sign({
                     username:user.username,
                     userid:user._id
@@ -142,6 +181,7 @@ route.post('/login',(req,res)=>{
                 
             })
             .catch(err =>{
+                console.log(err);
               return res.status(401).json({
                   message:"Invalid Email or Password"
             });
@@ -149,6 +189,7 @@ route.post('/login',(req,res)=>{
       })
 })
 
+// use to reset password of user here a mail with a link is send to email and then from the link it goes to newpassword page
 route.post('/resetpassword',(req,res)=>{
     const user=req.body.username;
     console.log(user)
@@ -173,7 +214,7 @@ route.post('/resetpassword',(req,res)=>{
                 text: "Hello world?", // plain text body
                 html: `
                         <h4>Reset Password<h4>
-                        <p>Click on the link to Reset your Password <a href="http://localhost:4200/resetpassword/` +temptoken+`">http://localhost:4200/resetpassword/`+temptoken+`
+                        <p>Click on the link to Reset your Password <a href="https://paperlouge.herokuapp.com/resetpassword/` +temptoken+`">https://paperlouge.herokuapp.com/resetpassword/`+temptoken+`
                         </a>`
                         // html body
               };
@@ -188,11 +229,13 @@ route.post('/resetpassword',(req,res)=>{
             })
 
             return res.json({
-                message:"Email Sent"
+                message:"A verification Link has been send to your Register Email Please open link to reset password"
             })
     })
 })
 
+
+// This is to verify the token send with the password change link
 route.post('/reset',(req,res)=>{
 
     const token =req.body.token;
@@ -215,27 +258,7 @@ route.post('/reset',(req,res)=>{
             message:"Token Expired"
         })
     })
-    // UserInfo.findOne({token:req.body.token})
-    // .then((response)=>{
-    //     token=response.token;
-    //     //console.log(token);
-
-    //     const verification_result=jwt.verify(token,'hdgbwsjd6reset#@$%^!*pass^%word56xw75xw867$%%$%^To$#ken&%^&');
-
-    //     if(!verification_result){
-    //        return res.json({
-    //             message:"Token Expires"
-    //         })
-    //     }
-
-    //     //console.log('verification_result',verification_result);
-    //     username=verification_result.userid;
-    //     //console.log("Token Username",username);
-    //     UserInfo.update({username:username},{$set:{verified:true}})
-    //     .then((result)=>{
-    //        // console.log(result);
-    //     })
-    //    // console.log("Token Status",response);
-    // })
     })
+
+
 module.exports=route;

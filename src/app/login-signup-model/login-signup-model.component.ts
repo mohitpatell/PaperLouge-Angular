@@ -14,12 +14,15 @@ export class LoginSignupModelComponent implements OnInit {
   signupdetail:FormGroup;
   logindetail:FormGroup;
   cpass:false;
+  submited:boolean=false;//this is to check that user has click on login_submit button
+  loginsubmited:boolean=false;//this is to check that user has click on signup_submit button
   ngOnInit() {
 
     this.signupdetail=new FormGroup({
       name:new FormControl(null,{validators:[Validators.required]}),
       email:new FormControl(null,{validators:[Validators.required,Validators.email]}),
       username:new FormControl(null,{validators:[Validators.required]}),
+      gender:new FormControl(null,{validators:[Validators.required]}),
       password:new FormControl(null,{validators:[Validators.required]}),
       confirmpassword:new FormControl(null,{validators:[Validators.required]}),
     });
@@ -31,6 +34,10 @@ export class LoginSignupModelComponent implements OnInit {
   }
 
   login(){
+    this.loginsubmited=true;
+    if(this.logindetail.invalid){
+       return;
+     }
     console.log(this.logindetail.value)
     this.userdetail.login(this.logindetail.value);
     
@@ -49,6 +56,7 @@ export class LoginSignupModelComponent implements OnInit {
   }
 
   signUp(){
+    this.submited=true;
     if(this.signupdetail.value.confirmpassword!=this.signupdetail.value.password)
     {
       alert('Password Does not match');

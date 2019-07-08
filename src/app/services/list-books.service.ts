@@ -16,7 +16,7 @@ export class ListBooksService{
 
 
     biographies(){
-        this.http.get<{books:any}>('http://localhost:3000/list/biographies')
+        this.http.get<{books:any}>('https://sheltered-forest-96439.herokuapp.com/list/biographies')
                  .subscribe((response)=>{
                     this.categorybooks=response.books
                     this.listbooks.next({
@@ -29,7 +29,7 @@ export class ListBooksService{
     }
 
     novel(){
-        this.http.get<{books:any}>('http://localhost:3000/list/novel')
+        this.http.get<{books:any}>('https://sheltered-forest-96439.herokuapp.com/list/novel')
                 .subscribe((response)=>{
                     this.categorybooks=response.books
                     this.listbooks.next({
@@ -39,7 +39,7 @@ export class ListBooksService{
     }
 
     science(){
-        this.http.get<{books:any}>('http://localhost:3000/list/science')
+        this.http.get<{books:any}>('https://sheltered-forest-96439.herokuapp.com/list/science')
         .subscribe((response)=>{
             this.categorybooks=response.books
             this.listbooks.next({
@@ -49,7 +49,7 @@ export class ListBooksService{
     }
 
     buisness(){
-        this.http.get<{books:any}>('http://localhost:3000/list/buisness')
+        this.http.get<{books:any}>('https://sheltered-forest-96439.herokuapp.com/list/buisness')
         .subscribe((response)=>{
             this.categorybooks=response.books
             this.listbooks.next({
@@ -59,7 +59,7 @@ export class ListBooksService{
     }
 
     selfhelp(){
-        this.http.get<{books:any}>('http://localhost:3000/list/selfhelp')
+        this.http.get<{books:any}>('https://sheltered-forest-96439.herokuapp.com/list/selfhelp')
         .subscribe((response)=>{
             this.categorybooks=response.books
             this.listbooks.next({
@@ -69,7 +69,7 @@ export class ListBooksService{
     }
 
     technology(){
-        this.http.get<{books:any}>('http://localhost:3000/list/technology')
+        this.http.get<{books:any}>('https://sheltered-forest-96439.herokuapp.com/list/technology')
         .subscribe((response)=>{
             this.categorybooks=response.books
             this.listbooks.next({

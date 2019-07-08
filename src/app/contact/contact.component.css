@@ -1,0 +1,95 @@
+a {
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0;
+}
+p{
+    font-weight: bold;
+}
+.contact-head{
+    text-align: justify;
+    padding: 2% 3%;
+}
+button {
+	border-radius: 20px;
+    background-color: #222;
+    border: 1px solid #222;
+    color: #FFFFFF;
+    font-family: 'Work Sans', sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	outline: none;
+	text-transform: uppercase;
+    transition: all 0.2s ease-in;
+    margin: 12px 0;
+}
+
+button:hover {
+    background-color: teal;
+    color: white;
+    border: 1px solid teal;
+}
+
+button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+form {
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+
+input,textarea {
+	background-color: #fff;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	outline: none;
+	width: 100%;
+}
+
+.form-box {
+	height: 100%;
+    transition: all 0.6s ease-in-out;
+    padding: 4% 0;
+}
+.contact-details img{
+    width: 25px;
+    margin:5px 15px 5px 0;
+}
+.contact-details h2{
+    margin: 10px auto;
+    font-family: 'Raleway', sans-serif;
+    color: #222;
+    font-weight: 500;
+    text-align: left;
+    font-size: 25px;
+}
+
+@media only screen and (max-width: 420px){
+
+	form {
+		padding: 0 10px;
+		height: 100%;
+		text-align: center;
+	}
+	.contact-head{
+		padding: 0px 0px;
+	}
+	.contact-details{
+		margin: 25px 0;
+	}
+	.contact-details h2{
+		margin: 10px 0;
+		font-size: 22px;
+	}
+}

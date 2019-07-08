@@ -18,7 +18,7 @@
               </div>
             </div>
              <div class="download">
-               <a *ngIf="userCanDownload" href={{mybooks.PDF}}> <button matTooltip="Download PDF for free" aria-label="download"> Download</button></a>
+               <a *ngIf="userCanDownload" (click)="addDownload()" href={{mybooks.PDF}}> <button matTooltip="Download PDF for free" aria-label="download"> Download</button></a>
                <a *ngIf="!userCanDownload" > <button (click)="download()" matTooltip="Download PDF for free" aria-label="download"> Download</button></a>
              </div>
              <div class="buy">
@@ -45,7 +45,7 @@
                </div>
                <div class="tag-icons" *ngIf="mybooks.tag==='3'">
                   <img src="assets/icons/icon-editor.svg" />
-                  <p>Editiot's Choice</p>
+                  <p>Editior's Choice</p>
                </div>
                <div class="tag-icons" *ngIf="mybooks.tag==='4'">
                   <img src="assets/icons/icon-best.svg" />
@@ -69,26 +69,27 @@
 
 <div class="box">
     <div class="row">
-      <div class="col-md-2" *ngFor="let bookitem of booklist | slice:9">
+      <div class="col-md-2" *ngFor="let bookitem of related | slice:9">
        
       
-          <div class="box-item">
-             <img src="assets/img/bookcover2.webp" alt="">
-                <div class="star-ratings-css">
-                  <div class="star-ratings-css-top" style="width: 95%">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                  <div class="star-ratings-css-bottom">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                </div>
-             <a href="">
-                <div class="subbookname"><span>{{bookitem.name}}</span></div>
-                <div class="subbookprice"><span>&#x20b9;{{bookitem.price}}</span></div>
-              </a>
-              <a href="">
-              <div class="addbtn">
-                ADD TO MYBOOKS
-                          </div>  </a> 
-                  </div>
+        <div class="box-item">
+          <img src="assets/img/bookcover2.webp" alt="">
+             <div class="star-ratings-css">
+               <div class="star-ratings-css-top" style="width: 95%">
+                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+               <div class="star-ratings-css-bottom">
+                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+             </div>
+          <a >
+             <div class="subbookname"><span>{{bookitem.bookName}}</span></div>
+             <div class="subbookprice"><span>&#x20b9;{{bookitem.price}}</span></div>
+           </a>
+           <a [routerLink]="['/checkout']">
+               <div class="buybtn">
+                   <p><span><img src="assets/icons/buy.svg" style="width: 10px"></span>buy</p>
+                               </div>  </a> 
+                        
+               </div>
                
              
               </div>

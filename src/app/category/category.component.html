@@ -1,7 +1,7 @@
 <section class="category-section">
- 
+ <div class="container">
 <div class="category-block">
-    <div class="head"> CATEGORY HEADING </div>
+    <div class="head"> {{bookcategory}} </div>
 <div class="category-body">
   <div class="row">
    
@@ -9,7 +9,7 @@
    
       <div class="category-options">
         <div class="option-head">Categories</div>
-        
+        <hr>
          <div class="option-items"><a (click)="biographies()" [routerLink]="['/category','biographies']" class="links">Biographies</a></div> 
          <div class="option-items"><a (click)="novel()" [routerLink]="['/category','novel']" class="links">Novels</a></div> 
          <div class="option-items"><a (click)="science()" [routerLink]="['/category','science']" class="links">Science</a></div> 
@@ -39,12 +39,12 @@
               </div>
            <a  [routerLink]="['/bookdescription',bookcategory,bookitem._id]">
               <div class="bookname"><span>{{bookitem.bookName}}</span></div>
-              <div class="bookprice"><span>&#x20b9;{{bookitem.price}}</span></div>
+              <div class="bookprice"><span>{{bookitem.bookAuthor}}</span></div>
             </a>
-            <a href="">
-            <div class="addbtn">
-              ADD TO MYBOOKS
-                        </div>  </a> 
+            <a [routerLink]="['/checkout']">
+              <div class="buybtn">
+              <p><span><img src="assets/icons/buy.svg" style="width: 10px"></span>buy</p>
+                          </div>  </a> 
                 </div>
               </div>
            
@@ -55,5 +55,5 @@
   </div>
   </div>
   </div>
-
+</div>
 </section>

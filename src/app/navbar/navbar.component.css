@@ -10,13 +10,16 @@ nav {
   background: #844D36 !important;
 }
 .nav-link{
-  text-transform: uppercase;
   padding: 0 20px !important;
-  font-family: 'Work Sans', sans-serif!important;
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: bolder;
   font-size: 1rem;
   color: teal !important;
   font-weight: bold !important;
   margin:8px auto !important;
+}
+.nav-link:hover{
+  color: #222 !important;
 }
 .logo-container{
   display: flex;
