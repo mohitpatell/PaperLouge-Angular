@@ -51,7 +51,7 @@ overflow: hidden;
 margin:20px auto;
 
 }
-.buybtn{
+/* .buybtn{
 position: absolute;
 top: 58%; 
 transition: all 0.1s ease-in-out;
@@ -73,7 +73,7 @@ margin: 0 5px;
 }
 .box-item:hover .buybtn{
 opacity: 1;
-}
+} */
 
 .box-item img{
 width: 130px;
@@ -127,7 +127,12 @@ z-index: 0;
 .container{
   box-sizing: border-box;
 }
-
+@media only screen and (max-width: 991px){
+    .category-options{
+        display: none;
+       
+    }
+}
 @media only screen and (max-width: 420px){
   .category-options{
       display: none;

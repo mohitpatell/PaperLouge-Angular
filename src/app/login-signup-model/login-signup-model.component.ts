@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 
@@ -9,6 +9,8 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginSignupModelComponent implements OnInit {
 
+
+
   constructor(public userdetail:AuthService) { }
 
   signupdetail:FormGroup;
@@ -17,6 +19,8 @@ export class LoginSignupModelComponent implements OnInit {
   submited:boolean=false;//this is to check that user has click on login_submit button
   loginsubmited:boolean=false;//this is to check that user has click on signup_submit button
   ngOnInit() {
+
+   
 
     this.signupdetail=new FormGroup({
       name:new FormControl(null,{validators:[Validators.required]}),

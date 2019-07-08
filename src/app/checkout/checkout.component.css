@@ -2,17 +2,15 @@
    width: 50%;
    margin: 50px auto;
 }
-.checkout-section{
-    margin-top:100px;
-}
+
 .checkout-head{
-    font-size: 50px;
-    font-weight: bold;
-    font-family: 'Work Sans', sans-serif;
-    margin: 30px;
-}
-mat-form-field{
-    width: 80%;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.2rem;
+  color: #444;
+  font-weight: 600;
+  text-align: center;
+  text-transform: capitalize;
+  margin: 20px auto;
 }
 
 /**
@@ -45,4 +43,84 @@ mat-form-field{
   
   .StripeElement--webkit-autofill {
     background-color: #fefde5 !important;
+  }
+
+  button {
+    border-radius: 20px;
+      background-color: #222;
+      border: 1px solid #222;
+      color: #FFFFFF;
+      font-family: 'Work Sans', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    outline: none;
+    text-transform: uppercase;
+      transition: all 0.2s ease-in;
+      margin: 12px 0;
+  }
+  
+  button:hover {
+      background-color: teal;
+      color: white;
+      border: 1px solid teal;
+  }
+  
+  button.ghost {
+    background-color: transparent;
+    border-color: #FFFFFF;
+  }
+  
+  form {
+      display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+  }
+  
+  input,textarea {
+    background-color: #fff;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    outline: none;
+    width: 100%;
+  }
+  
+  .form-box {
+    height: 100%;
+      transition: all 0.6s ease-in-out;
+      padding: 4% 0;
+      border: 1px solid #00000026;
+  }
+  @media only screen and (max-width: 991px){
+    .checkout-box{
+      width: 70%;}
+  }
+  
+  @media only screen and (max-width: 420px){
+  
+    form {
+      padding: 0 10px;
+      height: 100%;
+      text-align: center;
+    }
+    .contact-head{
+      padding: 0px 0px;
+    }
+    .contact-details{
+      margin: 25px 0;
+    }
+    .contact-details h2{
+      margin: 10px 0;
+      font-size: 22px;
+    }
+    .checkout-box{
+      width: 100%;}
+      section {
+        padding: 1rem 0;}
   }

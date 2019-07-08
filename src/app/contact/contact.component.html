@@ -2,33 +2,33 @@
   <div class="container">
     <div class="head">Contact Us</div>
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-lg-8 col-md-12">
         <div class="container">
           <div class="contact-form">
            
                 <div class="container"> <div class="contact-head"><p>You can contact us any way that is convenient for you. We are available 24/7 via email. You can also use a quick contact form below.</p></div></div>
             
             <div class=" form-box">
-                <form action="#">
+                <form (submit)="contactdetail()" [formGroup]="contact">
                   <div class="row">
                     <div class="col-md-6">
-                    <input type="text" placeholder="First Name" />
+                    <input type="text" formControlName="fname" placeholder="First Name" />
                     </div>
                     <div class="col-md-6">
-                    <input type="text" placeholder="Last Name" />
+                    <input type="text" formControlName="lname" placeholder="Last Name" />
                     </div>
                     <div class="col-md-6">
-                      <input type="email" placeholder="Email" />
+                      <input type="email" formControlName="email" placeholder="Email" />
                     </div>
                     <div class="col-md-6">
-                            <input type="number" placeholder="Phone" />
+                            <input type="number" formControlName="contact" placeholder="Phone" />
                     </div>
                     <div class="col-md-12">                                
-                  <textarea name="comment" form="usrform" placeholder="Message"></textarea> 
+                  <textarea name="comment" form="usrform" formControlName="message" placeholder="Message"></textarea> 
                    </div>       
                    <div class="col-md-12">                                
 
-                  <button>Send Message</button></div>
+                  <button type="submit">Send Message</button></div>
                  
       
                   </div>
@@ -37,7 +37,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-lg-4 col-md-12">
         <div class="container">
           <div class="contact-details">
 

@@ -5,9 +5,9 @@
 <div class="category-body">
   <div class="row">
    
-  <div class="col-md-2">
+  <div class="col-lg-2  col-md-0 category-options">
    
-      <div class="category-options">
+      <div class="">
         <div class="option-head">Categories</div>
         <hr>
          <div class="option-items"><a (click)="biographies()" [routerLink]="['/category','biographies']" class="links">Biographies</a></div> 
@@ -22,15 +22,16 @@
   </div>
 
 
-  <div class="col-md-10">
+  <div class="col-lg-10 col-md-12">
      
 <div class="box">
   <div class="row">
-    <div class="col-md-3" *ngFor="let bookitem of mybooks">
+    <div class="col-md-3 col" *ngFor="let bookitem of mybooks">
      
     <div class="box-body" >
         <div class="box-item">
-           <img src={{bookitem.image}} alt="">
+            <a  [routerLink]="['/bookdescription',bookcategory,bookitem._id]">
+           <img src={{bookitem.image}} alt=""></a>
               <div class="star-ratings-css">
                 <div class="star-ratings-css-top" [style.width]="bookitem.rating + '%'">
                   <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
@@ -41,10 +42,10 @@
               <div class="bookname"><span>{{bookitem.bookName}}</span></div>
               <div class="bookprice"><span>{{bookitem.bookAuthor}}</span></div>
             </a>
-            <a [routerLink]="['/checkout']">
+            <!-- <a [routerLink]="['/checkout']">
               <div class="buybtn">
               <p><span><img src="assets/icons/buy.svg" style="width: 10px"></span>buy</p>
-                          </div>  </a> 
+                          </div>  </a>  -->
                 </div>
               </div>
            

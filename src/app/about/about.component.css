@@ -97,7 +97,18 @@ border: 2px solid teal;
 cite{
   font-size: 0.95rem;
 }
-
+@media only screen and (max-width: 991px){
+  .service {
+    margin: 15px 10px;
+    padding: 12px;
+    height: 42vh;
+    }
+    .about-box p{
+      padding:30px 0; 
+    }
+    .about-image {
+      width: 80%;}
+}
 @media only screen and (max-width: 420px){
 
 
@@ -105,18 +116,22 @@ cite{
   margin: 40px 0 20px 0;
 }
 
+.about-box p{
+  padding:20px 0; 
+}
+
 .about-box strong{
 font-size: 1.3rem;
 font-weight: bolder;
 }
 .service-icon{
-width: 18%;
+width: 25%;
 margin: 0;
 }
-.service[_ngcontent-c6] {
+.service {
 margin: 10px 5px;
 padding: 10px;
-height: 35vh;
+min-height: 40vh;
 }
 
 .service-card h4 {

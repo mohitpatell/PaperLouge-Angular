@@ -6,8 +6,9 @@ nav {
   font-weight: 600;
   padding: 0 !important;
 }
-.nav-white{
-  background: #844D36 !important;
+
+.logo img{
+  width: 200px;
 }
 .nav-link{
   padding: 0 20px !important;
@@ -18,6 +19,9 @@ nav {
   font-weight: bold !important;
   margin:8px auto !important;
 }
+
+
+
 .nav-link:hover{
   color: #222 !important;
 }
@@ -132,6 +136,10 @@ nav {
   .menu-wrap .hamburger{
     display: flex;
   }
+  
+.logo img{
+  width: 170px;
+}
 
 /*HAMBURGER MENU STYLING BEGINS --only visible in small screen devices*/
 
@@ -206,4 +214,10 @@ nav {
   .dropdown:hover .dropdown-menu {display: block;}
  
 }
+@media only screen and (max-width:420px){
+  .logo img{
+    width: 160px;
+  }
+}
+
 

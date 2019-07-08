@@ -1,16 +1,22 @@
-<section class="checkout-section">
+<section>
 
 
   <div class="container text-center ">
     <div class="checkout-box">
-      <div class="checkout-head">CHECKOUT</div>
-
-
-      <mat-card >
-        <div>Make Payment</div>
-      <div class="card-content">
-          <div class="content">
-          <form  (ngSubmit)="buy()" [formGroup]="stripeTest">
+      <div class="head">Checkout</div>
+      
+     
+              <div class=" form-box">
+                  <div class="checkout-head">Make Payment</div>
+                  <form (ngSubmit)="buy()" [formGroup]="stripeTest">
+                      <input type="text"  placeholder="Name" name="name"required type="text" />
+                      <input type="text" placeholder="Email" name="email"required type="text" />
+                      <ngx-stripe-card [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
+                    <button>Proceed</button>
+                  </form>
+                </div>
+                
+          <!-- <form  (ngSubmit)="buy()" [formGroup]="stripeTest">
 
             <mat-form-field class="example-full-width">
               <input matInput placeholder="Name" name="name"required type="text">
@@ -28,7 +34,7 @@
       </div>
       </div>
       
-    </mat-card>
+    </mat-card> -->
      
     </div>
   </div>

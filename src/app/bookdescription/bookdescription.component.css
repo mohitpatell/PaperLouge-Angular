@@ -7,7 +7,9 @@
 .description-block{
     margin:10vh 0;
 }
-
+p{
+    font-weight: 600;
+}
 .star-ratings-css {
     unicode-bidi: bidi-override;
     color: #c5c5c5;
@@ -138,6 +140,7 @@ width: 100%;
     width: 120px;
     height: 180px;
     box-shadow: 2px 6px 6px -2px rgba(0,0,0,0.75);
+    margin: auto;
 }
  .box-item a{
      font-size: 1rem;
@@ -182,8 +185,29 @@ width: 100%;
     display: block;
     z-index: 0;
   }
+  @media only screen and (max-width: 991px){
+
+  .description-block {
+    margin: 2vh 0;
+  }
+  .book-image{
+    width: 100%;
+    margin-top: 2vh;
+}
+
+}
 
   @media only screen and (max-width: 480px){
+
+    
+    section{
+        padding: 1rem;
+        margin-top:2vh;
+    }
+   
+    .bookdescription {
+        padding: 0px}
+    
     .book-image{
         width: 65%;}
   

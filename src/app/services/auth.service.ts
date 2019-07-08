@@ -14,8 +14,13 @@ export class AuthService{
 
     constructor(private http:HttpClient){}
 
-    gettoken(){
+    gettoken(){ 
         return this.token;
+    }
+
+    dashboard(){
+       return this.http.get<{result:any}>('https://sheltered-forest-787.herokuapp.com/dashboard')
+
     }
 
     register(details:any){
@@ -27,7 +32,7 @@ export class AuthService{
             gender: details.gender,
             password:details.password
         })
-        this.http.post<{message:string}>('http://localhost:3000/signup',data)
+        this.http.post<{message:string}>('https://sheltered-forest-96439.herokuapp.com/signup',data)
                  .subscribe((response)=>{
                      alert(response.message);
                  })
@@ -56,7 +61,7 @@ export class AuthService{
             password:logindetail.password
         }
 
-        this.http.post<{message:string, token:string}>('http://localhost:3000/login',details)
+        this.http.post<{message:string, token:string}>('https://sheltered-forest-96439.herokuapp.com/login',details)
                 .subscribe((response)=>{
                     this.token=response.token;
                     if(this.token){
@@ -133,4 +138,17 @@ googlelogin(){
         })
     }
 
+    contact(temp){
+        const contact_info={
+            email:temp.email,
+            fname:temp.fname,
+            lname:temp.lname,
+            contact:temp.contact_no,
+            message:temp.message
+        }
+        this.http.post<{msg:string}>('https://sheltered-forest-96439.herokuapp.com/contact',contact_info)
+        .subscribe(response=>{
+            alert(response.msg);
+        })
+    }
 }

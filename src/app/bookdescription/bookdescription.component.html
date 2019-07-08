@@ -22,13 +22,13 @@
                <a *ngIf="!userCanDownload" > <button (click)="download()" matTooltip="Download PDF for free" aria-label="download"> Download</button></a>
              </div>
              <div class="buy">
-                <button matTooltip="Buy the book" aria-label="buy"> Buy</button>
+                <button matTooltip="Buy the book" aria-label="buy" [routerLink]="['/checkout']"> Buy</button>
              </div>
              <div class="bookprice">
-               <p>Price : &#x20b9;{{mybooks.price}}</p>
+               <p>Price : &#x20b9; {{mybooks.price}}</p>
              </div>
              <div class="bookcategory">
-               <p>Category : {{mybooks.category}}</p>
+               <p>Category : {{mybooks.category |titlecase}}</p>
              </div>
              <div class="booktag">
                <div class="tag-icons" *ngIf="mybooks.tag==='1'">
@@ -65,15 +65,14 @@
           </div>
           <div class="container">
             <div class="related-books">
-<div class="head">You may also like</div>
+<div class="head">You may also like <span>Swipe to see more</span> </div>
 
 <div class="box">
-    <div class="row">
-      <div class="col-md-2" *ngFor="let bookitem of related | slice:9">
-       
-      
+    <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide  *ngFor="let bookitem of related | slice:9">
         <div class="box-item">
-          <img src="assets/img/bookcover2.webp" alt="">
+            <a [routerLink]="['/']">
+          <img src="assets/img/bookcover2.webp" alt=""></a>
              <div class="star-ratings-css">
                <div class="star-ratings-css-top" style="width: 95%">
                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
@@ -84,16 +83,14 @@
              <div class="subbookname"><span>{{bookitem.bookName}}</span></div>
              <div class="subbookprice"><span>&#x20b9;{{bookitem.price}}</span></div>
            </a>
-           <a [routerLink]="['/checkout']">
+           <!-- <a [routerLink]="['/checkout']">
                <div class="buybtn">
                    <p><span><img src="assets/icons/buy.svg" style="width: 10px"></span>buy</p>
-                               </div>  </a> 
+                               </div>  </a>  -->
                         
                </div>
-               
-             
-              </div>
-            </div>
+               </ng-template>
+               </owl-carousel-o>
             </div>
 
 </div>

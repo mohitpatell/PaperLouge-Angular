@@ -12,8 +12,10 @@
 <div class="welcome-text text-center">
     new here ?<span> Get Started</span> 
 <br><br>
-    <a *ngIf="!logged" data-toggle="modal" data-target="#myModal">Sign Up Now</a>
+    <a *ngIf="!logged" data-toggle="modal" data-target="#myModal" style="cursor: pointer" (click)="signupTab()">Sign Up Now</a>
+    <br><br>
   </div>
+  <div class="welcome-text text-center"> And download  {{downloadedBOOKS}} books for free  </div>
 </section>
 
 
@@ -24,41 +26,67 @@
     <div class="category-icons">
       <div class="container">
       <div class="row">
-        <div class="col-md-2 text-center" ><a [routerLink]="['/category','biographies']"><img src="assets/icons/bio.svg" alt=""><p>Biographies</p></a></div>
-      <div class="col-md-2 text-center"> <a [routerLink]="['/category','novel']"><img src="assets/icons/novel.svg" alt=""><p>Novels</p></a></div>
-      <div class="col-md-2 text-center">  <a [routerLink]="['/category','science']"><img src="assets/icons/science.svg" alt=""><p>Science</p></a></div>
-      <div class="col-md-2 text-center">  <a [routerLink]="['/category','technology']"><img src="assets/icons/tech.svg" alt=""><p>Technology</p></a></div>
-      <div class="col-md-2 text-center"> <a [routerLink]="['/category','buisness']"><img src="assets/icons/buisness.svg" alt=""><p>Business</p></a></div>
-      <div class="col-md-2 text-center"> <a [routerLink]="['/category','selfhelp']"><img src="assets/icons/self-help.svg" alt=""><p>Self-Help</p></a></div>
+      <div class="col-lg-2 col-md-4 col text-center" ><a [routerLink]="['/category','biographies']"><img src="assets/icons/bio.svg" alt=""><p>Biographies</p></a></div>
+      <div class="col-lg-2 col-md-4 col text-center"> <a [routerLink]="['/category','novel']"><img src="assets/icons/novel.svg" alt=""><p>Novels</p></a></div>
+      <div class="col-lg-2 col-md-4 col text-center">  <a [routerLink]="['/category','science']"><img src="assets/icons/science.svg" alt=""><p>Science</p></a></div>
+      <div class="col-lg-2 col-md-4 col text-center">  <a [routerLink]="['/category','technology']"><img src="assets/icons/tech.svg" alt=""><p>Technology</p></a></div>
+      <div class="col-lg-2 col-md-4 col text-center"> <a [routerLink]="['/category','buisness']"><img src="assets/icons/buisness.svg" alt=""><p>Business</p></a></div>
+      <div class="col-lg-2 col-md-4 col text-center"> <a [routerLink]="['/category','selfhelp']"><img src="assets/icons/self-help.svg" alt=""><p>Self-Help</p></a></div>
     </div>
   </div>
-    
-    
-     
-     
-
     </div>
-    
     </section>
     
 
 <section class="section-home" style="margin-top:-45px !important;">
         <div class="container">
-          <div class="main-content">
-           
-              <div class="main-wrapper">
-
-                <!------------TRENDING CAROUSEL------------->
+               
                 <div class="book-carousel">
                 <div class="box">
-                  <div class="head" aria-valuenow="Trending">Trending</div>
+                  <div class="head">Trending<span>swipe to see more</span></div>
+               
+                  <br>
                   <div class="box-body">
-                    <div id="trending-caousel" class="carousel slide" data-ride="carousel">
-                      <div class="carousel-inner">
-                        <div class="carousel-item active">
-                          <div class="row">
-                            <div class="col-md-2" *ngFor="let bookitem of mybooks |slice:9">
+                     <owl-carousel-o [options]="customOptions">
+  <ng-template carouselSlide *ngFor="let bookitem of mybooks">
                               <div class="box-item">
+                                  <img src="{{bookitem.image}}" alt="">
+                                    <div class="book-caption">
+                                    <a [routerLink]="['/bookdescription']">
+                                      <div class="bookname"><span>{{bookitem.name}}</span></div>
+                                      <div class="bookprice"><span>{{bookitem.author}}</span></div>
+                                    </a>
+                                    <div class="bookrating">
+                                        <div class="star-ratings-css">
+                                          <div class="star-ratings-css-top" style="width: 95%">
+                                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                                          <div class="star-ratings-css-bottom">
+                                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                                        </div>
+                                      </div>
+                                      <div class="addbtn text-center">
+                                      <mat-chip-list matTooltip="Add to MyBooks" aria-label="add to mybooks">
+                                          <mat-chip style="font-size: 1rem;">ADD</mat-chip>
+                                          </mat-chip-list>
+                                        </div>
+                                        </div>
+                                </div>
+                                </ng-template>
+                                </owl-carousel-o>
+                          </div>     
+               </div>
+            </div>
+
+             
+            <div class="book-carousel">
+              <div class="box">
+                <div class="head">New Releases<span>swipe to see more</span></div>
+            
+                <br>
+                <div class="box-body">
+                   <owl-carousel-o [options]="customOptions">
+<ng-template carouselSlide *ngFor="let bookitem of mybooks">
+                            <div class="box-item">
                                 <img src="{{bookitem.image}}" alt="">
                                   <div class="book-caption">
                                   <a [routerLink]="['/bookdescription']">
@@ -80,289 +108,47 @@
                                       </div>
                                       </div>
                               </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="carousel-item ">
-                            <div class="row">
-                              <div class="col-md-2" *ngFor="let bookitem of mybooks |slice:9">
-                                  <div class="box-item">
-                                     <img src="assets/img/bookcover2.webp" alt="">
-                                       
-                                        <div class="book-caption">
-                                        <a [routerLink]="['/bookdescription']">
-                                          <div class="bookname"><span>{{bookitem.name}}</span></div>
-                                          <div class="bookprice"><span>{{bookitem.author}}</span></div>
-                                        </a>
-                                        <div class="bookrating">
-                                            <div class="star-ratings-css">
-                                              <div class="star-ratings-css-top" style="width: 95%">
-                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                                              <div class="star-ratings-css-bottom">
-                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                                            </div>
-                                          </div>
-                                          <div class="addbtn text-center">
-                                          <mat-chip-list matTooltip="Add to MyBooks" aria-label="add to mybooks">
-                                              <mat-chip style="font-size: 1rem;">ADD</mat-chip>
-                                              </mat-chip-list>
-                                            </div>
-                                            </div>
-                                    </div>
-                              </div>
-                            </div>
-                          </div>
-                      </div>
-                      <a class="carousel-control-prev" href="#trending-caousel" role="button" data-slide="prev">
-                        <img class="carousel-icon c-left" src="assets/icons/left-arrow.svg" aria-hidden="true" />
-                      </a>
-                      <a class="carousel-control-next" href="#trending-caousel" role="button" data-slide="next">
-                        <img class="carousel-icon c-right" src="assets/icons/right-arrow.svg" aria-hidden="true" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <mat-divider></mat-divider>
-<!--------------------------------------NEW Releases carousel--------------------------------->
-              <div class="book-carousel">
-                  <div class="box">
-                    <div class="head" aria-valuenow="Trending">new releases</div>
-                    <div class="box-body">
-                      <div id="new-caousel" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <div class="row">
-                              <div class="col-md-2" *ngFor="let bookitem of mybooks |slice:9">
-                                <div class="box-item">
-                                 <img src="{{bookitem.image}}" alt="">
-                                    
-                                    <div class="book-caption">
-                                    <a [routerLink]="['/bookdescription']">
-                                      <div class="bookname"><span>{{bookitem.name}}</span></div>
-                                      <div class="bookprice"><span>{{bookitem.author}}</span></div>
-                                    </a>
-                                    <div class="bookrating">
-                                        <div class="star-ratings-css">
-                                          <div class="star-ratings-css-top" style="width: 95%">
-                                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                                          <div class="star-ratings-css-bottom">
-                                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                                        </div>
-                                      </div>
-                                      <div class="addbtn text-center">
-                                      <mat-chip-list matTooltip="Add to MyBooks" aria-label="add to mybooks">
-                                          <mat-chip style="font-size: 1rem;">ADD</mat-chip>
-                                          </mat-chip-list>
-                                        </div>
-                                        </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="carousel-item ">
-                              <div class="row">
-                                <div class="col-md-2" *ngFor="let bookitem of mybooks |slice:9">
-                                    <div class="box-item">
-                                       <img src="assets/img/bookcover2.webp" alt="">
-                                         
-                                          <div class="book-caption">
-                                          <a [routerLink]="['/bookdescription']">
-                                            <div class="bookname"><span>{{bookitem.name}}</span></div>
-                                            <div class="bookprice"><span>{{bookitem.author}}</span></div>
-                                          </a>
-                                          <div class="bookrating">
-                                              <div class="star-ratings-css">
-                                                <div class="star-ratings-css-top" style="width: 95%">
-                                                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                                                <div class="star-ratings-css-bottom">
-                                                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                                              </div>
-                                            </div>
-                                            <div class="addbtn text-center">
-                                            <mat-chip-list matTooltip="Add to MyBooks" aria-label="add to mybooks">
-                                                <mat-chip style="font-size: 1rem;">ADD</mat-chip>
-                                                </mat-chip-list>
-                                              </div>
-                                              </div>
-                                      </div>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#new-caousel" role="button" data-slide="prev">
-                          <img class="carousel-icon c-left" src="assets/icons/left-arrow.svg" aria-hidden="true" />
-                        </a>
-                        <a class="carousel-control-next" href="#new-caousel" role="button" data-slide="next">
-                          <img class="carousel-icon c-right" src="assets/icons/right-arrow.svg" aria-hidden="true" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <mat-divider></mat-divider>
-                <!-----------------BEST SELLERS CAROUSEL------------------>
-                <div class="book-carousel">
-                    <div class="box">
-                      <div class="head" aria-valuenow="Trending">best sellers</div>
-                      <div class="box-body">
-                        <div id="bestsellers-caousel" class="carousel slide" data-ride="carousel">
-                          <div class="carousel-inner">
-                            <div class="carousel-item active">
-                              <div class="row">
-                                <div class="col-md-2" *ngFor="let bookitem of mybooks |slice:9">
-                                  <div class="box-item">
-                                  <img src="{{bookitem.image}}" alt="">
-                                     
-                                      <div class="book-caption">
-                                      <a [routerLink]="['/bookdescription']">
-                                        <div class="bookname"><span>{{bookitem.name}}</span></div>
-                                        <div class="bookprice"><span>{{bookitem.author}}</span></div>
-                                      </a>
-                                      <div class="bookrating">
-                                          <div class="star-ratings-css">
-                                            <div class="star-ratings-css-top" style="width: 95%">
-                                              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                                            <div class="star-ratings-css-bottom">
-                                              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                                          </div>
-                                        </div>
-                                        <div class="addbtn text-center">
-                                        <mat-chip-list matTooltip="Add to MyBooks" aria-label="add to mybooks">
-                                            <mat-chip style="font-size: 1rem;">ADD</mat-chip>
-                                            </mat-chip-list>
-                                          </div>
-                                          </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item ">
-                                <div class="row">
-                                  <div class="col-md-2" *ngFor="let bookitem of mybooks |slice:9">
-                                      <div class="box-item">
-                                          <img src="assets/img/bookcover2.webp" alt="">
-                                            
-                                            <div class="book-caption">
-                                            <a [routerLink]="['/bookdescription']">
-                                              <div class="bookname"><span>{{bookitem.name}}</span></div>
-                                              <div class="bookprice"><span>{{bookitem.author}}</span></div>
-                                            </a>
-                                            <div class="bookrating">
-                                                <div class="star-ratings-css">
-                                                  <div class="star-ratings-css-top" style="width: 95%">
-                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                                                  <div class="star-ratings-css-bottom">
-                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                                                </div>
-                                              </div>
-                                              <div class="addbtn text-center">
-                                              <mat-chip-list matTooltip="Add to MyBooks" aria-label="add to mybooks">
-                                                  <mat-chip style="font-size: 1rem;">ADD</mat-chip>
-                                                  </mat-chip-list>
-                                                </div>
-                                                </div>
-                                        </div>
-                                  </div>
-                                </div>
-                              </div>
-                          </div>
-                          <a class="carousel-control-prev" href="#bestsellers-caousel" role="button" data-slide="prev">
-                            <img class="carousel-icon c-left" src="assets/icons/left-arrow.svg" aria-hidden="true" />
-                          </a>
-                          <a class="carousel-control-next" href="#bestsellers-caousel" role="button" data-slide="next">
-                            <img class="carousel-icon c-right" src="assets/icons/right-arrow.svg" aria-hidden="true" />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <mat-divider></mat-divider>
-                    <!-- ------------EDITOR'S SCHOICE CAROUSEL --------------->
-
-                    <div class="book-carousel">
-                        <div class="box">
-                          <div class="head" aria-valuenow="Trending">editor's choice</div>
-                          <div class="box-body">
-                            <div id="editorchoice-caousel" class="carousel slide" data-ride="carousel">
-                              <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                  <div class="row">
-                                    <div class="col-md-2" *ngFor="let bookitem of mybooks |slice:9">
-                                      <div class="box-item">
-                                       <img src="{{bookitem.image}}" alt="">
-                                          
-                                          <div class="book-caption">
-                                          <a [routerLink]="['/bookdescription']">
-                                            <div class="bookname"><span>{{bookitem.name}}</span></div>
-                                            <div class="bookprice"><span>{{bookitem.author}}</span></div>
-                                          </a>
-                                          <div class="bookrating">
-                                              <div class="star-ratings-css">
-                                                <div class="star-ratings-css-top" style="width: 95%">
-                                                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                                                <div class="star-ratings-css-bottom">
-                                                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                                              </div>
-                                            </div>
-                                            <div class="addbtn text-center">
-                                            <mat-chip-list matTooltip="Add to MyBooks" aria-label="add to mybooks">
-                                                <mat-chip style="font-size: 1rem;">ADD</mat-chip>
-                                                </mat-chip-list>
-                                              </div>
-                                              </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="carousel-item ">
-                                    <div class="row">
-                                      <div class="col-md-2" *ngFor="let bookitem of mybooks |slice:9">
-                                          <div class="box-item">
-                                             <img src="assets/img/bookcover2.webp" alt="">
-                                               
-                                                <div class="book-caption">
-                                                <a [routerLink]="['/bookdescription']">
-                                                  <div class="bookname"><span>{{bookitem.name}}</span></div>
-                                                  <div class="bookprice"><span>{{bookitem.author}}</span></div>
-                                                </a>
-                                                <div class="bookrating">
-                                                    <div class="star-ratings-css">
-                                                      <div class="star-ratings-css-top" style="width: 95%">
-                                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                                                      <div class="star-ratings-css-bottom">
-                                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                                                    </div>
-                                                  </div>
-                                                  <div class="addbtn text-center">
-                                                  <mat-chip-list matTooltip="Add to MyBooks" aria-label="add to mybooks">
-                                                      <mat-chip style="font-size: 1rem;">ADD</mat-chip>
-                                                      </mat-chip-list>
-                                                    </div>
-                                                    </div>
-                                            </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                              </div>
-                              <a class="carousel-control-prev" href="#editorchoice-caousel" role="button" data-slide="prev">
-                                <img class="carousel-icon c-left" src="assets/icons/left-arrow.svg" aria-hidden="true" />
-                              </a>
-                              <a class="carousel-control-next" href="#editorchoice-caousel" role="button" data-slide="next">
-                                <img class="carousel-icon c-right" src="assets/icons/right-arrow.svg" aria-hidden="true" />
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
- 
-
-                     
-            </div>
-           
+                              </ng-template>
+                              </owl-carousel-o>
+                        </div>     
+             </div>
           </div>
-        </div>
-</section>
 
+           
+          <div class="book-carousel">
+            <div class="box">
+              <div class="head">Editor's Choice<span>swipe to see more</span></div>
+              <br>
+              <div class="box-body">
+                 <owl-carousel-o [options]="customOptions">
+<ng-template carouselSlide *ngFor="let bookitem of mybooks">
+                          <div class="box-item">
+                              <img src="{{bookitem.image}}" alt="">
+                                <div class="book-caption">
+                                <a [routerLink]="['/bookdescription']">
+                                  <div class="bookname"><span>{{bookitem.name}}</span></div>
+                                  <div class="bookprice"><span>{{bookitem.author}}</span></div>
+                                </a>
+                                <div class="bookrating">
+                                    <div class="star-ratings-css">
+                                      <div class="star-ratings-css-top" style="width: 95%">
+                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                                      <div class="star-ratings-css-bottom">
+                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                                    </div>
+                                  </div>
+                                  <div class="addbtn text-center">
+                                  <mat-chip-list matTooltip="Add to MyBooks" aria-label="add to mybooks">
+                                      <mat-chip style="font-size: 1rem;">ADD</mat-chip>
+                                      </mat-chip-list>
+                                    </div>
+                                    </div>
+                            </div>
+                            </ng-template>
+                            </owl-carousel-o>
+                      </div>     
+           </div>
+        </div>
+          </div>
+</section> 
 <app-login-signup-model></app-login-signup-model>

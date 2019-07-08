@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import {Books} from '../services/books.model';
 import { ListBooksService } from '../services/list-books.service';
 import { AuthService } from '../services/auth.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-navbar',
@@ -19,11 +20,20 @@ export class NavbarComponent implements OnInit {
   isUserLoggedIn:Subscription;
 
   logged:boolean;
+
+ 
    
 
   constructor(public route :ActivatedRoute,public listbooks:ListBooksService, public auth:AuthService) { }
 
   ngOnInit() {
+
+    $(document).ready(function(){
+      $(".toggle").click(function(){
+          $("#menu-checked").prop("checked", false);
+      });
+  });
+
     let currentURL:string;
 console.log("navbar",this.logged);
 this.logged=this.auth.isLoggedIn;

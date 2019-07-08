@@ -53,6 +53,17 @@
     background-attachment: fixed;
     
 }
+
+.sub-head{
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2rem;
+    color: #444;
+    font-weight: 600;
+    text-align: center;
+    text-transform: capitalize;
+    margin: 0 auto;
+  }
+  
 .welcome-text{
     font-size: 1.1rem;
     font-weight: bold;
@@ -64,7 +75,7 @@
     border: 3px solid teal;
     border-radius: 20px;
     padding: 10px;
-    margin-top: 30px !important;;
+    
     color: #222;
     text-decoration: none;
 }
@@ -74,13 +85,12 @@
     letter-spacing: 0 !important;
 }
 .category-icons img{
-width:60%;
+width:50%;
 transition: all 0.1s ease-out;
 margin: auto;
 }
 .category-icons img:hover{
-    transform: scale(1.1);
-    
+    transform: scale(1.1); 
 }
 .category-icons {
     margin: 50px 0 0 0;
@@ -92,7 +102,7 @@ margin: auto;
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
     font-weight: 600;
-   
+   text-decoration: none !important;
     color: #222;
     transition: all 0.1s ease-in-out;
     margin:10px;
@@ -105,7 +115,7 @@ margin: auto;
 }
  /*----------------------------LANDING SECTION ENDS-------------------------------------------------*/
 .category-section{
-    margin: 10px auto !important;
+    margin: 2vh auto 6vh auto !important;
 }
 .cat-head{
     text-align: center !important;
@@ -131,7 +141,7 @@ margin: auto;
 .book-carousel .box-item{
     width: 150px;
     height: 230px;
-    margin: 0;
+    margin: auto;
     padding: 0;
     position: relative;
     transition: all 0.2s ease-in-out;
@@ -141,9 +151,8 @@ margin: auto;
 
 
 .head{
-    float: left !important;
     font-size: 2.2rem !important;
-    clear:  both !important;
+    margin: 35px auto;
 }
 
 /*rating STAR styles*/
@@ -179,6 +188,7 @@ margin: auto;
   .book-carousel .box-item img{
     width: 120px;
     height: 150px;
+    margin: auto;
 }
 
     .book-carousel .addbtn{
@@ -349,31 +359,45 @@ font-family: 'Montserrat', sans-serif;
   }
 
 
-  @media only screen and (max-width: 420px){
+ 
+@media only screen and (max-width:991px){
+
+.category-icons img {
+    width: 40%;
+}
+.landing-section{
+    background-position: 75%;
+    margin-top: 0 !important;
+}
+}
+
+@media only screen and (max-width: 420px){
+    .landing-section{
+        background-position: 83%;
+        background-position-y: -28px;
+        height: 50vh;
+    }
     .cat-head {
-       
         font-size: 1.2rem;
         color: teal;
         font-weight: bold;
         
     }  
-    .landing-section{
-        height: 50vh;
-    }
-
+  
     .welcome-section {
         margin:35px auto !important;
        
     }
     .category-icons img {
-        width: 32%;
+        width: 50%;
         transition: all 0.1s ease-out;
       
     }
     .category-icons a {
-        margin: 20px !important;
+        margin: auto 10px !important;
     }
-    .section-home{
-        display: none;
+    /* .section-home{
+         display: none; 
     }
+   */
 }

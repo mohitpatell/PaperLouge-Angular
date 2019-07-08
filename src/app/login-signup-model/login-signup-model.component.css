@@ -7,13 +7,17 @@ h1{
     text-align: center;
     
 }
+.gender input{
+	width: auto !important;
+	margin-left:10px;
+}
 
 p {
 	font-size: 14px;
 	font-weight: 100;
 	line-height: 20px;
 	letter-spacing: 0.5px;
-	margin: 20px 0 30px;
+	
 }
 
 span {
@@ -24,7 +28,7 @@ a {
 	color: #333;
 	font-size: 14px;
 	text-decoration: none;
-	margin: 15px 0;
+	margin: 15px auto;
 }
 
 button {
@@ -40,14 +44,16 @@ button {
 	outline: none;
 	text-transform: uppercase;
     transition: all 0.2s ease-in;
-    margin: 12px 0;
+	margin: 12px auto;
+    min-width: 45%;
 }
 .cross-btn{
     float: right;
     background: none;
     font-size: 30px;
     padding: inherit;
-    border: none;
+	border: none;
+	margin-right: -18%;
 }
 .cross-btn:hover{
     background: none;
@@ -70,12 +76,12 @@ button.ghost {
 form {
 	background-color: #FFFFFF;
 	display: flex;
-	align-items: center;
+	
 	justify-content: center;
 	flex-direction: column;
 	padding: 0 50px;
 	height: 100%;
-	text-align: center;
+
 }
 
 input {
@@ -133,7 +139,9 @@ input {
 	height: 40px;
 	width: 40px;
 }
-
+.social-container{
+	text-align: center;
+}
 
 .social-container button {
 	display: inline-flex;
@@ -152,6 +160,16 @@ input {
 	align-items: center;
 	margin: 5px 20px;
 }
+.mat-radio-button ~ .mat-radio-button {
+	margin-left: 16px;
+	color: #444;
+	  font-weight: 500;
+  }
+  label{
+	  margin: 10px;
+	  color: #444;
+	  font-weight: 500;
+  }
 @media only screen and (max-width: 600px){
 
 	.modal-box {

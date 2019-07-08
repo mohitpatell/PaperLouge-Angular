@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import {NgxStripeModule} from 'ngx-stripe';
-import { NgModule } from '@angular/core';
+
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatRadioModule} from '@angular/material/radio';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -34,8 +36,9 @@ import { BookdescriptionComponent } from './bookdescription/bookdescription.comp
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { FooterComponent } from './footer/footer.component';
 import { UsernameComponent } from './username/username.component';
-
 import { ErrorInterceptor } from './interceptor/ErrorInterceptor';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +75,8 @@ import { ErrorInterceptor } from './interceptor/ErrorInterceptor';
     MatChipsModule,
     MatDividerModule,
     MatStepperModule,
-
+    MatRadioModule,
+    CarouselModule,
     NgxStripeModule.forRoot('pk_test_ul5zqjTYvWdy5MhHAPaSVVsC00Ist42jOg')
 
   ],

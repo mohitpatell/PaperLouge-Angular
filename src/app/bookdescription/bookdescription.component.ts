@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BookDescriptionService } from '../services/book-description.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+
 
 @Component({
 
@@ -14,6 +16,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class BookdescriptionComponent implements OnInit {
 
+ 
    mybooks:any;
    category:string;
    bookId:string;
@@ -62,5 +65,42 @@ export class BookdescriptionComponent implements OnInit {
     this.bookdesc.addbooktodownload();
   }
 
+  customOptions: OwlOptions = {
+    loop: false,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 700,
+    margin: 30,
+    stagePadding:25,
+    nav:true,
+    navText:["<img src='assets/icons/prev.png'>","<img src='/assets/icons/next.png'>"],
+    responsive: {
+      0: {
+        items: 1,
+        nav: false
+      },
+      500: {
+        items: 3,
+        nav: true
+      },
+      600: {
+        items: 3,
+        nav: true
+      },
+      1000: {
+        items: 4,
+        nav: true,
+        loop: false
+      },
+      1500: {
+        items: 5,
+        nav: true,
+        loop: false
+      }
+    },
+    
+  }
 
 }
